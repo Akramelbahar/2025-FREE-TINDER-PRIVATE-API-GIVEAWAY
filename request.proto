@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message RefreshAuth {
+    string refresh_token = 1;
+}
+
+message AuthFlowVariant {
+    string auth_flow_id = 2;
+    string user_id = 3;
+    bytes timestamp = 4;
+}
+
+message MainMessage {
+    RefreshAuth refresh_auth = 5; // Adjust field number to match observed data
+    AuthFlowVariant auth_flow_variant = 23; // Match field number 23
+}
