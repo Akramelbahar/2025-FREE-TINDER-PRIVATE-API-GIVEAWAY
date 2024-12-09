@@ -53,3 +53,45 @@ requests
 protobuf
 protobuf-decoder
 frida-tools
+# Guide to Extract Refresh Token and Device ID Using Frida
+
+This guide explains how to extract the `refresh_token` and `deviceId` from the Tinder app using Frida and a rooted Android emulator.
+
+---
+
+## Prerequisites
+
+1. **Rooted Android Emulator**  
+   - Install **MEmu** from its official site.  
+   - Enable **Root Mode**: Go to `Settings > Developer Options` and activate Root.  
+
+2. **Frida Installation**  
+   - Install Frida tools on your system using Python:  
+     ```bash
+     pip install frida-tools
+     ```
+
+3. **Tinder APK**  
+   - Download the latest Tinder APK from a trusted source.  
+   - Install it in the MEmu emulator by dragging and dropping the APK file.  
+
+4. **Custom Frida Script**  
+   - Prepare a Frida script (e.g., `tinder_scraper.js`) to hook into Tinder's authentication functions.
+
+---
+
+## Step-by-Step Guide
+
+### Step 1: Launch MEmu and Tinder App
+- Open the MEmu emulator.  
+- Launch the Tinder app and log in with your account.
+
+---
+
+### Step 2: Attach Frida to Tinder
+1. Connect Frida to the emulator:  
+   ```bash
+   frida -U -n com.tinder -s tinder_scraper.js
+-U: Connect to the USB or emulator device.
+-n com.tinder: Specifies the Tinder app.
+-s tinder_scraper.js: Runs your custom Frida script.
